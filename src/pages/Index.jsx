@@ -35,7 +35,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 h-screen">
       <header className="bg-white shadow fixed top-0 left-0 right-0 z-10">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
           <h1 className="text-2xl font-bold">Your Name</h1>
@@ -66,17 +66,31 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 pt-24">
-        <section id="about" className="py-12">
+      <main
+        className="container mx-auto px-4 pt-24"
+        onClick={(e) => {
+          if (e.target.tagName === "A" && e.target.href.includes("#")) {
+            e.preventDefault();
+            const id = e.target.href.split("#")[1];
+            document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+          }
+        }}
+      >
+        <section id="about" className="h-screen flex flex-col justify-center items-center">
           <h2 className="text-3xl font-bold mb-4">About Me</h2>
           <p className="text-gray-600">A brief introduction about yourself goes here.</p>
         </section>
 
-        <section id="projects" className="py-12">
+        <section id="projects" className="h-screen flex flex-col justify-center items-center">
           <h2 className="text-3xl font-bold mb-4">Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <div key={index} className="bg-white shadow rounded-lg overflow-hidden">
+              <div key={index} className="bg-white shadow rounded-lg overflow-hidden relative">
+                <button onClick={() => document.getElementById("projects").nextElementSibling.scrollIntoView({ behavior: "smooth" })} className="absolute bottom-0 right-0 p-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m0 0l-3.5-3.5m3.5 3.5l3.5-3.5" />
+                  </svg>
+                </button>
                 <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
                 <div className="p-4">
                   <h3 className="text-xl font-bold mb-2">{project.title}</h3>
@@ -90,7 +104,7 @@ const Index = () => {
           </div>
         </section>
 
-        <section id="experience" className="py-12">
+        <section id="experience" className="h-screen flex flex-col justify-center items-center">
           <h2 className="text-3xl font-bold mb-4">Work Experience</h2>
           <div className="border-l-2 border-gray-200 ml-4">
             {workExperience.map((experience, index) => (
@@ -105,7 +119,7 @@ const Index = () => {
           </div>
         </section>
 
-        <section id="contact" className="py-12">
+        <footer id="contact" className="h-screen flex flex-col justify-center items-center">
           <h2 className="text-3xl font-bold mb-4">Connect with Me</h2>
           <div className="flex space-x-4">
             <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-800">
@@ -115,7 +129,7 @@ const Index = () => {
               <FaLinkedin size={32} />
             </a>
           </div>
-        </section>
+        </footer>
       </main>
     </div>
   );
