@@ -42,22 +42,22 @@ const Index = () => {
           <nav>
             <ul className="flex space-x-4">
               <li>
-                <a href="#about" className="text-gray-600 hover:text-gray-800">
+                <a href="#about" className="text-gray-600 hover:text-gray-800" onClick={() => document.getElementById('about').scrollIntoView({ behavior: 'smooth' })}>
                   About
                 </a>
               </li>
               <li>
-                <a href="#projects" className="text-gray-600 hover:text-gray-800">
+                <a href="#projects" className="text-gray-600 hover:text-gray-800" onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}>
                   Projects
                 </a>
               </li>
               <li>
-                <a href="#experience" className="text-gray-600 hover:text-gray-800">
+                <a href="#experience" className="text-gray-600 hover:text-gray-800" onClick={() => document.getElementById('experience').scrollIntoView({ behavior: 'smooth' })}>
                   Experience
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-gray-600 hover:text-gray-800">
+                <a href="#contact" className="text-gray-600 hover:text-gray-800" onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
                   Contact
                 </a>
               </li>
@@ -67,12 +67,12 @@ const Index = () => {
       </header>
 
       <main className="container mx-auto px-4 pt-24">
-        <section id="about" className="py-12">
+        <section id="about" className="py-12 min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-blue-500 to-purple-600">
           <h2 className="text-3xl font-bold mb-4">About Me</h2>
           <p className="text-gray-600">A brief introduction about yourself goes here.</p>
         </section>
 
-        <section id="projects" className="py-12">
+        <section id="projects" className="py-12 min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-green-500 to-blue-600">
           <h2 className="text-3xl font-bold mb-4">Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
@@ -90,7 +90,7 @@ const Index = () => {
           </div>
         </section>
 
-        <section id="experience" className="py-12">
+        <section id="experience" className="py-12 min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-yellow-500 to-orange-600">
           <h2 className="text-3xl font-bold mb-4">Work Experience</h2>
           <div className="border-l-2 border-gray-200 ml-4">
             {workExperience.map((experience, index) => (
@@ -105,7 +105,7 @@ const Index = () => {
           </div>
         </section>
 
-        <section id="contact" className="py-12">
+        <footer id="contact" className="py-12 min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-red-500 to-pink-600">
           <h2 className="text-3xl font-bold mb-4">Connect with Me</h2>
           <div className="flex space-x-4">
             <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-800">
@@ -115,7 +115,7 @@ const Index = () => {
               <FaLinkedin size={32} />
             </a>
           </div>
-        </section>
+        </footer>
       </main>
     </div>
   );
